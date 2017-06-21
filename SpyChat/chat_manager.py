@@ -2,6 +2,8 @@ from spy_details import Chat_Message
 from steganography.steganography import Steganography
 from termcolor import colored
 import os.path
+from datetime import datetime
+
 class Chat_Manager:
 
     def __init__(self, spy):
@@ -13,7 +15,7 @@ class Chat_Manager:
             print "Invalid option"
             return
         input_image = raw_input("Name of the image: ")
-        if (os.path.isfile("name.txt") == False):
+        if (os.path.isfile(input_image) == False):
             print "Invalid File Name"
             return
         message = raw_input("Your Message: ")
@@ -29,7 +31,7 @@ class Chat_Manager:
             print "Invalid option"
             return
         output_image = raw_input("What is the name of the file?")
-        if (os.path.isfile("name.txt") == False):
+        if (os.path.isfile(output_image) == False):
             print "Invalid File Name"
             return
         try:
@@ -47,6 +49,7 @@ class Chat_Manager:
 
     def read_chat_history(self):
         friend_id = self.spy.select_a_friend()
+
         if friend_id >= len(self.spy.friends):
             print "Invalid option"
             return
