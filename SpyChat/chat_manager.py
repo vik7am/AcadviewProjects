@@ -1,7 +1,7 @@
 from spy_details import Chat_Message
 from steganography.steganography import Steganography
 from termcolor import colored
-
+import os.path
 class Chat_Manager:
 
     def __init__(self, spy):
@@ -13,6 +13,9 @@ class Chat_Manager:
             print "Invalid option"
             return
         input_image = raw_input("Name of the image: ")
+        if (os.path.isfile("name.txt") == False):
+            print "Invalid File Name"
+            return
         message = raw_input("Your Message: ")
         Steganography.encode(input_image, "output.jpg", message)
         chat = Chat_Message(message, True)
@@ -26,6 +29,9 @@ class Chat_Manager:
             print "Invalid option"
             return
         output_image = raw_input("What is the name of the file?")
+        if (os.path.isfile("name.txt") == False):
+            print "Invalid File Name"
+            return
         try:
             message = Steganography.decode(output_image)
         except:
