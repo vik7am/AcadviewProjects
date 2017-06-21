@@ -3,10 +3,10 @@ from chat_manager import Chat_Manager
 from spy_details import Spy_Details
 
 def login():
-    resume = int(raw_input("1.Continue as Mr. James Bond \n2.New Spy \n3.Exit \n"))
-    if (resume == 1):
+    resume = raw_input("1.Continue as Mr. James Bond \n2.New Spy \n3.Exit \n")
+    if resume == "1":
         home()
-    elif(resume==2):
+    elif resume=="2":
         spy_detail.name = raw_input("Your Name: ")
         if len(spy_detail.name) > 0:
             spy_detail.salutation = raw_input("Mr. or Ms.: ")
@@ -19,7 +19,7 @@ def login():
         else:
             print "Invalid name"
             login()
-    elif resume==3:
+    elif resume=="3":
         print "Bye"
     else:
         print "Invalid option"
@@ -36,25 +36,25 @@ def home():
     ONLINE = True
     while ONLINE:
         menu = "1. Add a status update \n2. Add a friend \n3. Send a secret message \n4. Read a secret message \n5. Read Chats from a user \n6. Close Application \n"
-        choice = int(raw_input(menu))
-        if(choice==1):
+        choice = raw_input(menu)
+        if choice=="1" :
             spy.add_status()
-        elif choice==2:
+        elif choice=="2":
             no_of_friends=spy.add_friend()
             print "No of Friends: "+str(no_of_friends)
-        elif choice==3:
+        elif choice=="3":
             chat.send_message()
-        elif choice==4:
+        elif choice=="4":
             chat.read_message()
-        elif choice==5:
+        elif choice=="5":
             chat.read_chat_history()
-        elif(choice==6):
+        elif choice=="6" :
             ONLINE=False
         else:
             print "Invalid option"
 
 print "Welcome to Spy Chat"
-spy_detail=Spy_Details('James bond', 'Mr.', 28, 4.1,"I'm Bond. James Bond.")
+spy_detail=Spy_Details("James bond", "Mr.", 28, 4.1,"I'm Bond. James Bond.")
 spy=Spy_Manager(spy_detail)
 chat=Chat_Manager(spy)
 login()

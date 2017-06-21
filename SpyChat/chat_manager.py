@@ -8,9 +8,8 @@ class Chat_Manager:
         self.spy=spy
 
     def send_message(self):
-
         friend_id = self.spy.select_a_friend()
-        if(friend_id>=len(self.spy.friends)):
+        if friend_id>=len(self.spy.friends):
             print "Invalid option"
             return
         input_image = raw_input("Name of the image: ")
@@ -22,14 +21,13 @@ class Chat_Manager:
         print "Image Name:output.jpg"
 
     def read_message(self):
-
         friend_id = self.spy.select_a_friend()
-        if (friend_id >= len(self.spy.friends)):
+        if friend_id >= len(self.spy.friends):
             print "Invalid option"
             return
         output_image = raw_input("What is the name of the file?")
         message = Steganography.decode(output_image)
-        if(self.verify_message(message, friend_id)):
+        if self.verify_message(message, friend_id):
             chat = Chat_Message(message, False)
             self.spy.friends[friend_id].chats.append(chat)
             print "Message Decoded Successfully"
@@ -37,9 +35,8 @@ class Chat_Manager:
             print "Message Decoding Failed"
 
     def read_chat_history(self):
-
         friend_id = self.spy.select_a_friend()
-        if (friend_id >= len(self.spy.friends)):
+        if friend_id >= len(self.spy.friends):
             print "Invalid option"
             return
         for chat in self.spy.friends[friend_id].chats:
@@ -49,7 +46,7 @@ class Chat_Manager:
                 print "[%s] %s : %s" % (colored(chat.time.strftime("%d %B %Y"),"blue"), colored(self.spy.friends[friend_id].name, "red"), chat.message)
 
     def verify_message(self, message, friend_id):
-        if len(message)>10 :
+        if len(message)>100 :
             print "Your Friend %s %s is removed due to spamming" %(self.spy.friends[friend_id].sasalutation, self.spy.friends[friend_id].name)
             self.spy.friends.pop(friend_id)
             return False
