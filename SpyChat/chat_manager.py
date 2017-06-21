@@ -26,9 +26,14 @@ class Chat_Manager:
             print "Invalid option"
             return
         output_image = raw_input("What is the name of the file?")
-        message = Steganography.decode(output_image)
+        try:
+            message = Steganography.decode(output_image)
+        except:
+            print "Image does not contain any message"
+            return
         if self.verify_message(message, friend_id):
             chat = Chat_Message(message, False)
+
             self.spy.friends[friend_id].chats.append(chat)
             print "Message Decoded Successfully"
         else:
