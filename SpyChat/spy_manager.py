@@ -3,7 +3,7 @@ from spy_details import Spy_Details
 class Spy_Manager:
     def __init__(self, spy_detail):
         self.spy_detail=spy_detail
-        self.friends=[Spy_Details("Akash", "Mr.", 4.8, 25,""),Spy_Details("Jatin", "Mr.", 4.7, 24,""),Spy_Details("Neha", "Ms.", 4.6, 22,"")]
+        self.friends=[Spy_Details("Akash", "Mr.", 25, 4.8,""),Spy_Details("Jatin", "Mr.", 24, 4.7, ""),Spy_Details("Neha", "Ms.", 22, 4.6, "")]
 
     def add_status(self):
         print "Your Older status : "+self.spy_detail.status_message

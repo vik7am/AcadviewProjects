@@ -52,7 +52,7 @@ class Chat_Manager:
 
     def verify_message(self, message, friend_id):
         if len(message)>100 :
-            print "Your Friend %s %s is removed due to spamming" %(self.spy.friends[friend_id].sasalutation, self.spy.friends[friend_id].name)
+            print "Your Friend %s %s is removed due to spamming" %(self.spy.friends[friend_id].salutation, self.spy.friends[friend_id].name)
             self.spy.friends.pop(friend_id)
             return False
         elif message=="SOS":
